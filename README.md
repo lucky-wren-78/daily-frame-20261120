@@ -1,10 +1,16 @@
 # The Daily Frame — Friday 20 November 2026
 
+[![make.fun · news-image-20261120](https://make.fun/badge/news-image-20261120.svg)](https://make.fun/bounty/news-image-20261120?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261120)
+[![rank](https://make.fun/badge/news-image-20261120/lucky-wren-78/daily-frame-20261120/rank.svg)](https://make.fun/bounty/news-image-20261120/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261120)
+[![reward](https://make.fun/badge/news-image-20261120/lucky-wren-78/daily-frame-20261120/reward.svg)](https://make.fun/bounty/news-image-20261120?utm_source=github&utm_medium=readme&utm_campaign=news-image-20261120)
+
 A one-page newspaper front page summing up the world's news of
 Friday 20 November 2026 — **morning edition**, covering what had
 happened or been reported by **09:50 WIB / 02:50 UTC**. The day was
 not over when this edition was built, and the page says so on its
 face; it does not pretend to be the full day.
+
+Built for the [make.fun news-image-20261120 bounty](https://make.fun/bounty/news-image-20261120).
 
 ## What is in the picture
 
