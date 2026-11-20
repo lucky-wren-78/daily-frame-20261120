@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>The Daily Frame — Friday 20 November 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1024px; height: 1024px; }
+  body {
+    font-family: "Liberation Sans", Arial, Helvetica, sans-serif;
+    background: #fbf7ec; color: #1a1712;
+    padding: 9px 26px 8px 26px;
+    display: flex; flex-direction: column;
+  }
+  body > * { flex-shrink: 0; }
+  .g { font-family: Georgia, "Liberation Serif", "Times New Roman", serif; }
+
+  /* top strip */
+  .dateline { display: flex; justify-content: space-between; font-size: 9.5px; font-weight: 700; letter-spacing: 1.5px; color: #4f4636; border-bottom: 1px solid #1a1712; padding-bottom: 4px; }
+  .dateline .mid { letter-spacing: 2.2px; color: #a01e28; }
+
+  /* nameplate */
+  .nameplate { text-align: center; padding-top: 4px; }
+  .nameplate h1 { font-family: Georgia, "Liberation Serif", serif; font-size: 40px; line-height: 1; letter-spacing: 2px; }
+  .nameplate .motto { margin-top: 3px; font-size: 10px; letter-spacing: 3.5px; font-weight: 700; color: #4f4636; }
+  .nameplate .motto span { color: #a01e28; }
+  .nameplate .edition { margin-top: 2px; font-size: 9.5px; font-weight: 700; letter-spacing: 1.6px; color: #a01e28; }
+  .thickthin { border-top: 3.5px solid #1a1712; border-bottom: 1px solid #1a1712; height: 5px; margin: 6px 0 0 0; }
+
+  /* wire ticker */
+  .wire { font-size: 10px; letter-spacing: .2px; color: #2a251c; padding: 3px 0 4px 0; border-bottom: 1px solid #1a1712; white-space: nowrap; overflow: hidden; }
+  .wire b { color: #a01e28; letter-spacing: 2.5px; }
+  .wire i { color: #a01e28; font-style: normal; font-weight: 700; padding: 0 6px; }
+
+  /* lead story */
+  .leadzone { padding-top: 5px; }
+  .kickerrow { display: flex; justify-content: space-between; align-items: baseline; }
+  .kickerrow .kick { background: #a01e28; color: #fff; font-size: 10.5px; font-weight: 700; letter-spacing: 2px; padding: 3px 8px 2px 8px; }
+  .kickerrow .side { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: #4f4636; }
+  .leadzone h2 { font-family: Georgia, "Liberation Serif", serif; font-size: 25px; line-height: 1.08; font-weight: 700; margin-top: 4px; }
+  .leadbody { display: flex; gap: 16px; margin-top: 4px; }
+  .leadbody .copy { flex: 1 1 62%; }
+  .leadbody .copy p { font-size: 11px; line-height: 1.3; color: #2a251c; margin-bottom: 4px; }
+  .leadbody .copy p b { color: #1a1712; }
+  .leadbody .scene { flex: 1 1 38%; background: #ece4cd; border-top: 2.5px solid #1a1712; padding: 5px 7px 4px 7px; }
+  .scene .cap { font-size: 9px; letter-spacing: 1px; font-weight: 700; color: #4f4636; margin-top: 3px; line-height: 1.3; }
+
+  /* six cards, two columns */
+  .storygrid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 20px; margin-top: 5px; }
+  .story { border-top: 2.5px solid #1a1712; padding-top: 4px; display: flex; gap: 8px; }
+  .story .badge { flex: 0 0 25px; height: 25px; background: #1a1712; color: #fff; font-size: 12.5px; font-weight: 700; text-align: center; line-height: 25px; margin-top: 1px; }
+  .story .inner { flex: 1; }
+  .story .desk { font-size: 9.5px; font-weight: 700; letter-spacing: 1.6px; color: #a01e28; }
+  .story h3 { font-family: Georgia, "Liberation Serif", serif; font-size: 13px; line-height: 1.12; font-weight: 700; margin-top: 1px; }
+  .story p { font-size: 10px; line-height: 1.24; margin-top: 2px; color: #2a251c; }
+  .story p b { color: #1a1712; }
+
+  /* map, full width */
+  .mapzone { margin-top: 6px; border-top: 2.5px solid #1a1712; padding-top: 4px; }
+  .mapzone .maptitle { display: flex; justify-content: space-between; align-items: baseline; }
+  .mapzone .maptitle h4 { font-size: 11.5px; font-weight: 700; letter-spacing: 2px; }
+  .mapzone .maptitle span { font-size: 9.5px; font-weight: 700; letter-spacing: 1px; color: #4f4636; }
+  .maplegend { display: flex; flex-wrap: wrap; gap: 2px 12px; margin-top: 2px; font-size: 8.8px; line-height: 1.35; color: #2a251c; }
+  .maplegend b { color: #a01e28; letter-spacing: .5px; }
+
+  /* day in numbers */
+  .statstriphead { margin-top: 5px; font-size: 11.5px; font-weight: 700; letter-spacing: 2px; }
+  .statstrip { margin-top: 3px; border-top: 2.5px solid #1a1712; border-bottom: 1.5px solid #1a1712; padding: 4px 0; display: flex; }
+  .stat { flex: 1; text-align: center; border-right: 1px solid #c9bda0; padding: 0 4px; }
+  .stat:last-child { border-right: none; }
+  .stat .big { font-family: Georgia, "Liberation Serif", serif; font-size: 15px; font-weight: 700; color: #a01e28; line-height: 1.1; }
+  .stat .small { font-size: 8px; font-weight: 700; letter-spacing: .4px; color: #2a251c; line-height: 1.25; margin-top: 1px; }
+
+  /* briefs, two columns */
+  .briefzone { margin-top: 4px; }
+  .briefzone h4 { font-size: 11.5px; font-weight: 700; letter-spacing: 2px; border-top: 2.5px solid #1a1712; padding-top: 3px; }
+  .briefgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; margin-top: 2px; }
+  .brief { font-size: 9px; line-height: 1.18; color: #2a251c; margin-bottom: 1px; }
+  .brief .no { display: inline-block; background: #a01e28; color: #fff; font-size: 9px; font-weight: 700; padding: 1.5px 5px 1px 5px; margin-right: 4px; }
+  .brief b { color: #1a1712; }
+
+  /* colophon */
+  .colophon { margin-top: auto; border-top: 1.5px solid #1a1712; padding-top: 4px; display: flex; justify-content: space-between; font-size: 9px; letter-spacing: .8px; color: #4f4636; font-weight: 700; }
+</style>
+</head>
+<body>
+
+  <div class="dateline">
+    <span>FRIDAY 20 NOVEMBER 2026</span>
+    <span class="mid">THE WORLD IN ONE DAY</span>
+    <span>20 STORIES &middot; 6 CONTINENTS</span>
+  </div>
+
+  <div class="nameplate">
+    <h1>The Daily Frame</h1>
+    <div class="motto">ONE DAY <span>&middot;</span> ONE PAGE <span>&middot;</span> EVERY STORY CHECKED TWICE</div>
+    <div class="edition">MORNING EDITION &mdash; AS OF 09:50 WIB / 02:50 UTC</div>
+  </div>
+  <div class="thickthin"></div>
+
+  <div class="wire"><b>WIRE</b><i>&diams;</i>KYIV HIT OVERNIGHT<i>&diams;</i>TANKER BURNS OFF HORMUZ<i>&diams;</i>HOUTHIS STRIKE RIYADH<i>&diams;</i>TAIWAN CURBS SHORTS<i>&diams;</i>ROSE PARDONED</div>
+
+  <div class="leadzone">
+    <div class="kickerrow">
+      <span class="kick">1 &middot; KYIV, UKRAINE &mdash; OVERNIGHT</span>
+      <span class="side">LEAD STORY &middot; BALLISTIC MISSILES</span>
+    </div>
+    <h2>Missiles rain on Kyiv in the night</h2>
+    <div class="leadbody">
+      <div class="copy">
+        <p><b>Russia fired a wave of ballistic missiles at Kyiv</b> overnight into Friday, with explosions and fires reported across several districts of the capital. Air-raid alerts sounded across the city and other regions as the missiles came in.</p>
+        <p>The strike followed a major drone attack on the city the day before, which killed one person and damaged historic buildings and foreign embassies.</p>
+        <p>It came as Ukraine&rsquo;s European allies, meeting in Berlin, said they were ready for talks with Russia &mdash; with a united position for negotiations.</p>
+      </div>
+      <div class="scene">
+        <svg width="100%" height="86" viewBox="0 0 360 116">
+          <rect x="0" y="0" width="360" height="116" fill="#2b2b33"/>
+          <g fill="#fbf7ec"><circle cx="30" cy="18" r="1.6"/><circle cx="70" cy="30" r="1.2"/><circle cx="120" cy="14" r="1.5"/><circle cx="250" cy="20" r="1.6"/><circle cx="300" cy="12" r="1.2"/><circle cx="330" cy="34" r="1.5"/><circle cx="205" cy="12" r="1.2"/></g>
+          <g stroke="#e8a33d" stroke-width="2.5" stroke-linecap="round">
+            <line x1="180" y1="8" x2="180" y2="26"/><line x1="180" y1="52" x2="180" y2="70"/>
+            <line x1="152" y1="39" x2="168" y2="39"/><line x1="192" y1="39" x2="208" y2="39"/>
+            <line x1="160" y1="19" x2="171" y2="30"/><line x1="189" y1="48" x2="200" y2="59"/>
+            <line x1="200" y1="19" x2="189" y2="30"/><line x1="171" y1="48" x2="160" y2="59"/>
+          </g>
+          <circle cx="180" cy="39" r="15" fill="#e8a33d"/>
+          <circle cx="180" cy="39" r="8" fill="#f5c86e"/>
+          <ellipse cx="180" cy="96" rx="120" ry="10" fill="#e8a33d" opacity="0.35"/>
+          <g stroke="#e8a33d" stroke-width="1.8" stroke-linecap="round">
+            <line x1="120" y1="30" x2="128" y2="38"/><line x1="240" y1="30" x2="232" y2="38"/>
+          </g>
+          <circle cx="124" cy="34" r="5" fill="#e8a33d"/>
+          <circle cx="236" cy="34" r="5" fill="#e8a33d"/>
+          <g fill="#1a1712">
+            <rect x="28" y="66" width="36" height="30"/><rect x="72" y="56" width="30" height="40"/>
+            <rect x="110" y="72" width="26" height="24"/><rect x="142" y="62" width="32" height="34"/>
+            <rect x="212" y="70" width="30" height="26"/><rect x="250" y="58" width="28" height="38"/>
+            <rect x="286" y="68" width="34" height="28"/><rect x="326" y="74" width="24" height="22"/>
+          </g>
+          <g fill="#f5c86e"><rect x="36" y="72" width="5" height="6"/><rect x="48" y="82" width="5" height="6"/><rect x="80" y="62" width="5" height="6"/><rect x="150" y="68" width="5" height="6"/><rect x="258" y="64" width="5" height="6"/><rect x="296" y="74" width="5" height="6"/></g>
+          <rect x="0" y="96" width="360" height="4" fill="#e8a33d" opacity="0.7"/>
+          <text x="180" y="112" font-size="10" font-weight="700" letter-spacing="2" text-anchor="middle" fill="#fbf7ec">KYIV &middot; AFTER MIDNIGHT</text>
+        </svg>
+        <div class="cap">A NIGHT SKY OVER KYIV: AIR-RAID ALERTS, THEN EXPLOSIONS AND FIRES IN SEVERAL DISTRICTS.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="storygrid">
+    <div class="story">
+      <div class="badge">2</div>
+      <div class="inner">
+        <div class="desk">STRAIT OF HORMUZ &middot; MIDDLE EAST</div>
+        <h3>Tanker burns after hitting a mine off Hormuz</h3>
+        <p>A tanker caught fire after striking a naval mine east of the Strait of Hormuz, Iran&rsquo;s navy said; the claim could not be independently verified. <b>Brent crude held near $92</b> as the disruption offset surplus worries.</p>
+      </div>
+    </div>
+    <div class="story">
+      <div class="badge">3</div>
+      <div class="inner">
+        <div class="desk">RIYADH &middot; SAUDI ARABIA</div>
+        <h3>Houthis strike four Saudi targets</h3>
+        <p>Yemen&rsquo;s Houthis said they hit four targets in Saudi Arabia, including Riyadh. The Saudi-led coalition said it <b>intercepted five ballistic missiles and one cruise missile</b>. No casualties were reported.</p>
+      </div>
+    </div>
+    <div class="story">
+      <div class="badge">4</div>
+      <div class="inner">
+        <div class="desk">TAIPEI &middot; TAIWAN</div>
+        <h3>Taiwan clamps down on short sellers</h3>
+        <p>New short-selling curbs take effect today after the Taiex fell <b>4.4%</b> on Thursday. Stocks that drop 3.5% or more cannot be shorted below the close the next day; the daily cap on borrowed-share sales falls to 1%.</p>
+      </div>
+    </div>
+    <div class="story">
+      <div class="badge">5</div>
+      <div class="inner">
+        <div class="desk">WASHINGTON &middot; UNITED STATES</div>
+        <h3>Trump pardons baseball&rsquo;s hit king Pete Rose</h3>
+        <p>President Trump posthumously pardoned <b>Pete Rose</b>, baseball&rsquo;s all-time hits leader, banned from the game since 1989 over betting on games. The pardon is separate from any Hall of Fame decision.</p>
+      </div>
+    </div>
+    <div class="story">
+      <div class="badge">6</div>
+      <div class="inner">
+        <div class="desk">INDIA &middot; SOUTH ASIA</div>
+        <h3>80,000 moved as storm Dana nears</h3>
+        <p>India evacuated <b>more than 80,000 people</b> as tropical storm Dana approached the coast, with shelters opened and fishing boats called back to harbour ahead of landfall.</p>
+      </div>
+    </div>
+    <div class="story">
+      <div class="badge">7</div>
+      <div class="inner">
+        <div class="desk">BERLIN &middot; GERMANY</div>
+        <h3>Europe says it is ready to talk to Russia</h3>
+        <p>Ukraine&rsquo;s European allies, meeting in Berlin, said they have a <b>united position for negotiations</b> with Russia on ending the war &mdash; as the overnight strike on Kyiv underlined the stakes.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="mapzone">
+    <div class="maptitle">
+      <h4>THE DAY ON THE MAP</h4>
+      <span>NUMBERS MATCH THE STORIES BELOW &middot; SCHEMATIC, NOT TO SCALE</span>
+    </div>
+    <svg width="972" height="148" viewBox="0 0 972 148" style="display:block;margin-top:2px">
+      <rect x="0" y="0" width="972" height="148" fill="#efe8d2"/>
+      <!-- continents, rough equirectangular outlines (lon/lat mapped to the box) -->
+      <g fill="#d8cdae" stroke="#b3a67f" stroke-width="1">
+        <polygon points="32,20 108,16 149,16 230,17 270,23 284,25 311,25 338,31 324,35 297,39 284,45 267,53 243,57 224,61 203,58 176,50 149,41 149,34 108,25 68,26 41,25"/>
+        <polygon points="329,21 365,25 378,21 405,18 419,16 378,12 338,12 324,16"/>
+        <polygon points="270,66 297,64 319,66 338,69 351,74 378,78 392,81 378,86 357,92 338,99 324,105 311,111 297,117 289,115 289,107 292,99 297,89 284,86 270,78 267,74 270,70"/>
+        <polygon points="440,62 459,49 486,44 513,44 540,48 567,49 581,51 602,64 624,65 616,74 594,82 581,90 572,97 554,102 535,103 527,96 518,89 510,75 510,71 464,71 451,67 440,64"/>
+        <polygon points="459,44 462,39 481,35 486,33 500,30 508,27 513,25 535,28 543,29 551,25 567,25 567,16 554,16 535,17 518,21 500,25 500,26 508,29 518,30 535,30 551,30 562,37 548,41 537,39 527,38 518,38 508,38 494,39 486,41 481,44 470,44"/>
+        <polygon points="567,16 594,18 648,17 675,15 756,11 837,15 918,16 967,20 945,25 918,29 869,33 864,41 837,45 829,43 810,49 783,58 770,66 756,67 743,62 729,56 716,58 702,67 694,67 683,61 675,58 664,53 648,53 635,53 621,50 616,49 605,50 594,49 581,51 567,44"/>
+        <polygon points="791,92 794,99 797,103 810,102 837,100 856,103 864,105 883,106 891,104 899,96 880,90 869,83 853,84 843,84 826,85 815,88 805,90"/>
+        <polygon points="473,33 486,30 491,29 478,26 470,29"/>
+        <polygon points="837,49 851,46 864,43 869,40 864,37 851,38 837,43"/>
+        <polygon points="937,111 951,108 959,105 967,104 956,108 940,112"/>
+        <polygon points="743,78 770,79 797,81 824,81 851,77 864,81 837,76"/>
+        <polygon points="605,87 616,90 613,95 605,90"/>
+      </g>
+      <!-- graticule -->
+      <g stroke="#c9bda0" stroke-width="0.7">
+        <line x1="0" y1="49" x2="972" y2="49"/><line x1="0" y1="99" x2="972" y2="99"/>
+        <line x1="243" y1="0" x2="243" y2="148"/><line x1="486" y1="0" x2="486" y2="148"/><line x1="729" y1="0" x2="729" y2="148"/>
+      </g>
+      <!-- markers -->
+      <g font-family="Arial, Helvetica, sans-serif" font-size="8.5" font-weight="700" text-anchor="middle">
+        <g><circle cx="568" cy="32" r="7.5" fill="#a01e28"/><text x="568" y="35" fill="#fff">1</text></g>
+        <g><circle cx="646" cy="50" r="7.5" fill="#a01e28"/><text x="646" y="53" fill="#fff">2</text></g>
+        <g><circle cx="616" cy="58" r="7.5" fill="#a01e28"/><text x="616" y="61" fill="#fff">3</text></g>
+        <g><circle cx="814" cy="53" r="7.5" fill="#a01e28"/><text x="814" y="56" fill="#fff">4</text></g>
+        <g><circle cx="276" cy="40" r="7.5" fill="#a01e28"/><text x="276" y="43" fill="#fff">5</text></g>
+        <g><circle cx="720" cy="58" r="7.5" fill="#a01e28"/><text x="720" y="61" fill="#fff">6</text></g>
+        <g><circle cx="522" cy="31" r="7.5" fill="#a01e28"/><text x="522" y="34" fill="#fff">7</text></g>
+        <g><circle cx="508" cy="39" r="7.5" fill="#a01e28"/><text x="508" y="42" fill="#fff">8</text></g>
+        <g><circle cx="252" cy="44" r="7.5" fill="#a01e28"/><text x="252" y="47" fill="#fff">9</text></g>
+        <g><circle cx="162" cy="38" r="7.5" fill="#a01e28"/><text x="162" y="41" fill="#fff">10</text></g>
+        <g><circle cx="284" cy="50" r="7.5" fill="#a01e28"/><text x="284" y="53" fill="#fff">11</text></g>
+        <g><circle cx="580" cy="48" r="7.5" fill="#a01e28"/><text x="580" y="51" fill="#fff">12</text></g>
+        <g><circle cx="490" cy="34" r="7.5" fill="#a01e28"/><text x="490" y="37" fill="#fff">13</text></g>
+        <g><circle cx="612" cy="44" r="7.5" fill="#a01e28"/><text x="612" y="47" fill="#fff">14</text></g>
+        <g><circle cx="618" cy="28" r="7.5" fill="#a01e28"/><text x="618" y="31" fill="#fff">15</text></g>
+        <g><circle cx="54" cy="91" r="7.5" fill="#a01e28"/><text x="54" y="94" fill="#fff">16</text></g>
+        <g><circle cx="571" cy="70" r="7.5" fill="#a01e28"/><text x="571" y="73" fill="#fff">17</text></g>
+        <g><circle cx="286" cy="70" r="7.5" fill="#a01e28"/><text x="286" y="73" fill="#fff">18</text></g>
+        <g><circle cx="292" cy="36" r="7.5" fill="#a01e28"/><text x="292" y="39" fill="#fff">19</text></g>
+        <g><circle cx="150" cy="50" r="7.5" fill="#a01e28"/><text x="150" y="53" fill="#fff">20</text></g>
+      </g>
+    </svg>
+    <div class="maplegend">
+      <span><b>1</b> Kyiv</span><span><b>2</b> Hormuz</span><span><b>3</b> Riyadh</span><span><b>4</b> Taipei</span><span><b>5</b> Washington</span><span><b>6</b> India coast</span><span><b>7</b> Berlin</span><span><b>8</b> Genoa</span><span><b>9</b> Cincinnati</span><span><b>10</b> California</span><span><b>11</b> Washington</span><span><b>12</b> Lebanon</span><span><b>13</b> France</span><span><b>14</b> Tbilisi</span><span><b>15</b> Saratov</span><span><b>16</b> Cook Is.</span><span><b>17</b> Juba</span><span><b>18</b> Bogot&aacute;</span><span><b>19</b> New York</span><span><b>20</b> San Francisco</span>
+    </div>
+  </div>
+
+  <div class="statstriphead">THE DAY IN NUMBERS</div>
+  <div class="statstrip">
+    <div class="stat"><div class="big">80,000+</div><div class="small">PEOPLE EVACUATED<br>AHEAD OF STORM DANA</div></div>
+    <div class="stat"><div class="big">5 + 1</div><div class="small">MISSILES THE SAUDI-LED<br>COALITION SAYS IT SHOT DOWN</div></div>
+    <div class="stat"><div class="big">51&ndash;48</div><div class="small">US SENATE VOTE<br>REJECTING IRAN WAR POWERS</div></div>
+    <div class="stat"><div class="big">&minus;4.4%</div><div class="small">TAIEX ON THURSDAY,<br>BEFORE TAIWAN&rsquo;S CURBS</div></div>
+    <div class="stat"><div class="big">+17%</div><div class="small">ANTHROPIC ON ITS<br>FIRST DAY OF TRADING</div></div>
+  </div>
+
+  <div class="briefzone">
+    <h4>IN BRIEF &mdash; OVERNIGHT AND THIS MORNING</h4>
+    <div class="briefgrid">
+      <div class="brief"><span class="no">8</span><b>Genoa airport shut by drones.</b> Unauthorised drones near the runway halted flights for about two hours on Thursday evening; operations resumed after 22:00, with one ITA flight to Rome cancelled.</div>
+      <div class="brief"><span class="no">9</span><b>Fiona the hippo dies.</b> The Cincinnati Zoo hippo who survived a premature birth in 2017 died on Thursday aged 9, days after swallowing a visitor&rsquo;s hat that fell into her enclosure.</div>
+      <div class="brief"><span class="no">10</span><b>California probes Nvidia.</b> The state is investigating Nvidia over AI chips reaching China, days after chief executive Jensen Huang stepped down and markets slid.</div>
+      <div class="brief"><span class="no">11</span><b>Senate blocks Iran war powers.</b> The US Senate rejected a war-powers resolution on Iran 51&ndash;48, after the measure had passed the House.</div>
+      <div class="brief"><span class="no">12</span><b>Israel hits Lebanon.</b> Israeli warplanes struck a Hezbollah missile facility in eastern Lebanon, the latest strike across the border.</div>
+      <div class="brief"><span class="no">13</span><b>Deadly flat fire in France.</b> One person died and 15 were injured in a fire at an 18-storey apartment building in France.</div>
+      <div class="brief"><span class="no">14</span><b>Boy, 3, pulled from rubble.</b> A three-year-old was rescued alive eight hours after a gas explosion in Tbilisi, Georgia.</div>
+      <div class="brief"><span class="no">15</span><b>Three killed in Saratov.</b> Three people were killed in a drone attack on Russia&rsquo;s Saratov region.</div>
+      <div class="brief"><span class="no">16</span><b>Storm alerts in the Pacific.</b> The Cook Islands issued a gale warning for Suwarrow and a storm alert for Pukapuka as Cyclone Xavier tracks through.</div>
+      <div class="brief"><span class="no">17</span><b>Tinubu urges Machar release.</b> Nigeria&rsquo;s President Tinubu called for the release of South Sudan&rsquo;s detained vice-president Riek Machar.</div>
+      <div class="brief"><span class="no">18</span><b>US backs coca spraying.</b> Washington backed Colombia&rsquo;s plan to resume aerial spraying of coca crops, despite concerns from lawmakers.</div>
+      <div class="brief"><span class="no">19</span><b>Markets slide again.</b> Wall Street fell for a fifth straight session &mdash; the S&amp;P 500 down 2.0% &mdash; and Tokyo&rsquo;s Nikkei slid 4.7% on AI worries.</div>
+      <div class="brief"><span class="no">20</span><b>Anthropic soars on debut.</b> Anthropic closed up 17% on its first day of trading, after pricing the largest IPO on record at $83 a share.</div>
+    </div>
+  </div>
+
+  <div class="colophon">
+    <span>THE DAILY FRAME &middot; FRIDAY 20 NOVEMBER 2026</span>
+    <span>MORNING EDITION &middot; SOURCES IN SOURCES.MD</span>
+    <span>20 STORIES &middot; 6 CONTINENTS</span>
+  </div>
+
+</body>
+</html>
