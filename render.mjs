@@ -1,8 +1,8 @@
-// Renders design.html into entry.png at exactly 1024x1024.
+// Build-time renderer: turns design.html into entry.png, 1024x1024.
 //
-// Build-time only: the grader never runs this script. It runs main.ts,
-// which copies the entry.png produced here. Chromium comes from the
-// Playwright install in the workspace tools folder.
+// The grader never executes this file. It only runs main.ts, which copies
+// the entry.png produced here. Chromium is loaded from the Playwright
+// package installed under ~/workspace/makefun/tools-browser.
 //
 //   node render.mjs            (run from this directory)
 
@@ -11,21 +11,22 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const here = dirname(fileURLToPath(import.meta.url));
-const toolsPackage = join(
+const toolsManifest = join(
   process.env.HOME ?? '',
   'workspace/makefun/tools-browser/package.json',
 );
-const { chromium } = createRequire(toolsPackage)('playwright');
+const { chromium } = createRequire(toolsManifest)('playwright');
 
-const browser = await chromium.launch({ args: ['--force-device-scale-factor=1'] });
-try {
-  const page = await browser.newPage();
-  await page.setViewportSize({ width: 1024, height: 1024 });
-  await page.goto('file://' + join(here, 'design.html'), {
-    waitUntil: 'load',
-  });
-  await page.screenshot({ path: join(here, 'entry.png') });
-  console.log('rendered entry.png at 1024x1024');
-} finally {
-  await browser.close();
+async function render() {
+  const browser = await chromium.launch({ args: ['--force-device-scale-factor=1'] });
+  try {
+    const page = await browser.newPage({ viewport: { width: 1024, height: 1024 } });
+    await page.goto('file://' + join(here, 'design.html'), { waitUntil: 'load' });
+    await page.screenshot({ path: join(here, 'entry.png') });
+  } finally {
+    await browser.close();
+  }
 }
+
+await render();
+console.log('entry.png rendered (1024x1024)');

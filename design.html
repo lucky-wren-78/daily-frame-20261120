@@ -2,288 +2,337 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>The Daily Frame — Friday 20 November 2026</title>
+<title>The Daily Frame — Friday 20 November 2026, full day</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body { width: 1024px; height: 1024px; }
   body {
     font-family: "Liberation Sans", Arial, Helvetica, sans-serif;
-    background: #fbf7ec; color: #1a1712;
-    padding: 9px 26px 8px 26px;
+    background: #fdf9ef; color: #1c1a15;
+    padding: 8px 24px 7px 24px;
     display: flex; flex-direction: column;
   }
   body > * { flex-shrink: 0; }
-  .g { font-family: Georgia, "Liberation Serif", "Times New Roman", serif; }
+  .serif { font-family: Georgia, "Liberation Serif", "Times New Roman", serif; }
 
-  /* top strip */
-  .dateline { display: flex; justify-content: space-between; font-size: 9.5px; font-weight: 700; letter-spacing: 1.5px; color: #4f4636; border-bottom: 1px solid #1a1712; padding-bottom: 4px; }
-  .dateline .mid { letter-spacing: 2.2px; color: #a01e28; }
+  /* masthead: title left, date box right */
+  .mast { display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 5px; }
+  .mast-title h1 { font-family: Georgia, "Liberation Serif", serif; font-size: 40px; line-height: .95; letter-spacing: 1px; }
+  .mast-title .tagline { margin-top: 4px; font-size: 9.5px; font-weight: 700; letter-spacing: 2.6px; color: #6b5d43; }
+  .mast-title .tagline em { color: #a31220; font-style: normal; }
+  .datebox { text-align: right; border-left: 2.5px solid #1c1a15; padding-left: 12px; }
+  .datebox .dow { font-size: 10px; font-weight: 700; letter-spacing: 3px; color: #a31220; }
+  .datebox .date { font-family: Georgia, "Liberation Serif", serif; font-size: 19px; font-weight: 700; line-height: 1.15; }
+  .datebox .full { margin-top: 2px; font-size: 9px; font-weight: 700; letter-spacing: 1.8px; background: #a31220; color: #fff; padding: 2px 6px; display: inline-block; }
+  .doublerule { border-top: 3px solid #1c1a15; border-bottom: 1px solid #1c1a15; height: 4px; }
 
-  /* nameplate */
-  .nameplate { text-align: center; padding-top: 4px; }
-  .nameplate h1 { font-family: Georgia, "Liberation Serif", serif; font-size: 40px; line-height: 1; letter-spacing: 2px; }
-  .nameplate .motto { margin-top: 3px; font-size: 10px; letter-spacing: 3.5px; font-weight: 700; color: #4f4636; }
-  .nameplate .motto span { color: #a01e28; }
-  .nameplate .edition { margin-top: 2px; font-size: 9.5px; font-weight: 700; letter-spacing: 1.6px; color: #a01e28; }
-  .thickthin { border-top: 3.5px solid #1a1712; border-bottom: 1px solid #1a1712; height: 5px; margin: 6px 0 0 0; }
+  /* day banner */
+  .daybanner { display: flex; justify-content: space-between; font-size: 10px; font-weight: 700; letter-spacing: 1.4px; padding: 3px 0; border-bottom: 1px solid #1c1a15; }
+  .daybanner .l { color: #a31220; }
+  .daybanner .r { color: #6b5d43; }
 
-  /* wire ticker */
-  .wire { font-size: 10px; letter-spacing: .2px; color: #2a251c; padding: 3px 0 4px 0; border-bottom: 1px solid #1a1712; white-space: nowrap; overflow: hidden; }
-  .wire b { color: #a01e28; letter-spacing: 2.5px; }
-  .wire i { color: #a01e28; font-style: normal; font-weight: 700; padding: 0 6px; }
+  /* lead: headline full width, text + toll box below */
+  .leadin { padding-top: 4px; }
+  .leadin .kick { display: flex; justify-content: space-between; align-items: baseline; }
+  .leadin .kick .k { font-size: 10.5px; font-weight: 700; letter-spacing: 2px; color: #a31220; }
+  .leadin .kick .n { font-size: 9.5px; font-weight: 700; letter-spacing: 2px; color: #6b5d43; }
+  .leadin h2 { font-family: Georgia, "Liberation Serif", serif; font-size: 24px; line-height: 1.05; font-weight: 700; margin-top: 2px; }
+  .leadrow { display: flex; gap: 18px; margin-top: 5px; }
+  .leadrow .copy { flex: 1 1 60%; }
+  .leadrow .copy p { font-size: 10.8px; line-height: 1.3; color: #2c2820; margin-bottom: 3px; }
+  .leadrow .copy p b { color: #1c1a15; }
+  .tollbox { flex: 1 1 40%; background: #f3ead2; border-top: 2.5px solid #a31220; padding: 6px 9px 5px 9px; }
+  .tollbox h5 { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: #a31220; }
+  .tollbox ul { list-style: none; margin-top: 4px; }
+  .tollbox li { font-size: 10px; line-height: 1.35; color: #2c2820; padding-left: 10px; position: relative; }
+  .tollbox li::before { content: "\25AA"; position: absolute; left: 0; color: #a31220; }
+  .tollbox li b { color: #1c1a15; }
 
-  /* lead story */
-  .leadzone { padding-top: 5px; }
-  .kickerrow { display: flex; justify-content: space-between; align-items: baseline; }
-  .kickerrow .kick { background: #a01e28; color: #fff; font-size: 10.5px; font-weight: 700; letter-spacing: 2px; padding: 3px 8px 2px 8px; }
-  .kickerrow .side { font-size: 10px; font-weight: 700; letter-spacing: 2px; color: #4f4636; }
-  .leadzone h2 { font-family: Georgia, "Liberation Serif", serif; font-size: 25px; line-height: 1.08; font-weight: 700; margin-top: 4px; }
-  .leadbody { display: flex; gap: 16px; margin-top: 4px; }
-  .leadbody .copy { flex: 1 1 62%; }
-  .leadbody .copy p { font-size: 11px; line-height: 1.3; color: #2a251c; margin-bottom: 4px; }
-  .leadbody .copy p b { color: #1a1712; }
-  .leadbody .scene { flex: 1 1 38%; background: #ece4cd; border-top: 2.5px solid #1a1712; padding: 5px 7px 4px 7px; }
-  .scene .cap { font-size: 9px; letter-spacing: 1px; font-weight: 700; color: #4f4636; margin-top: 3px; line-height: 1.3; }
+  /* front six: three columns, two rows */
+  .fronthead { display: flex; justify-content: space-between; align-items: baseline; border-top: 2.5px solid #1c1a15; margin-top: 5px; padding-top: 3px; }
+  .fronthead h4 { font-size: 11.5px; font-weight: 700; letter-spacing: 2px; }
+  .fronthead span { font-size: 9.5px; font-weight: 700; letter-spacing: 1px; color: #6b5d43; }
+  .front3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 5px 18px; margin-top: 3px; }
+  .fcard { border-top: 1.5px solid #c9bda0; padding-top: 4px; display: flex; gap: 7px; }
+  .fcard .fnum { flex: 0 0 24px; height: 24px; background: #a31220; color: #fff; font-size: 12px; font-weight: 700; text-align: center; line-height: 24px; border-radius: 50%; margin-top: 1px; }
+  .fcard .fbody { flex: 1; }
+  .fcard .fdesk { font-size: 9px; font-weight: 700; letter-spacing: 1.4px; color: #a31220; }
+  .fcard h3 { font-family: Georgia, "Liberation Serif", serif; font-size: 12px; line-height: 1.12; font-weight: 700; margin-top: 1px; }
+  .fcard p { font-size: 9.5px; line-height: 1.22; margin-top: 2px; color: #2c2820; }
+  .fcard p b { color: #1c1a15; }
 
-  /* six cards, two columns */
-  .storygrid { display: grid; grid-template-columns: 1fr 1fr; gap: 4px 20px; margin-top: 5px; }
-  .story { border-top: 2.5px solid #1a1712; padding-top: 4px; display: flex; gap: 8px; }
-  .story .badge { flex: 0 0 25px; height: 25px; background: #1a1712; color: #fff; font-size: 12.5px; font-weight: 700; text-align: center; line-height: 25px; margin-top: 1px; }
-  .story .inner { flex: 1; }
-  .story .desk { font-size: 9.5px; font-weight: 700; letter-spacing: 1.6px; color: #a01e28; }
-  .story h3 { font-family: Georgia, "Liberation Serif", serif; font-size: 13px; line-height: 1.12; font-weight: 700; margin-top: 1px; }
-  .story p { font-size: 10px; line-height: 1.24; margin-top: 2px; color: #2a251c; }
-  .story p b { color: #1a1712; }
+  /* map row: map left, place index right */
+  .maprow { display: flex; gap: 14px; border-top: 2.5px solid #1c1a15; margin-top: 5px; padding-top: 3px; }
+  .mapleft { flex: 1 1 68%; }
+  .mapleft h4 { font-size: 11.5px; font-weight: 700; letter-spacing: 2px; }
+  .mapleft .mapnote { font-size: 9px; font-weight: 700; letter-spacing: 1px; color: #6b5d43; margin-top: 1px; }
+  .placelist { flex: 1 1 32%; }
+  .placelist h4 { font-size: 11.5px; font-weight: 700; letter-spacing: 2px; }
+  .placelist .cols { display: flex; gap: 10px; margin-top: 3px; }
+  .placelist ul { list-style: none; flex: 1; }
+  .placelist li { font-size: 8.6px; line-height: 1.42; color: #2c2820; }
+  .placelist li b { color: #a31220; }
 
-  /* map, full width */
-  .mapzone { margin-top: 6px; border-top: 2.5px solid #1a1712; padding-top: 4px; }
-  .mapzone .maptitle { display: flex; justify-content: space-between; align-items: baseline; }
-  .mapzone .maptitle h4 { font-size: 11.5px; font-weight: 700; letter-spacing: 2px; }
-  .mapzone .maptitle span { font-size: 9.5px; font-weight: 700; letter-spacing: 1px; color: #4f4636; }
-  .maplegend { display: flex; flex-wrap: wrap; gap: 2px 12px; margin-top: 2px; font-size: 8.8px; line-height: 1.35; color: #2a251c; }
-  .maplegend b { color: #a01e28; letter-spacing: .5px; }
+  /* numbers band */
+  .numband { margin-top: 5px; }
+  .numband h4 { font-size: 11.5px; font-weight: 700; letter-spacing: 2px; border-top: 2.5px solid #1c1a15; padding-top: 3px; }
+  .numrow { display: flex; margin-top: 3px; border: 1.5px solid #1c1a15; }
+  .numcell { flex: 1; text-align: center; padding: 4px 3px 3px 3px; border-right: 1px solid #c9bda0; }
+  .numcell:last-child { border-right: none; }
+  .numcell .v { font-family: Georgia, "Liberation Serif", serif; font-size: 16px; font-weight: 700; color: #a31220; line-height: 1.05; }
+  .numcell .t { font-size: 7.8px; font-weight: 700; letter-spacing: .3px; color: #2c2820; line-height: 1.25; margin-top: 2px; }
 
-  /* day in numbers */
-  .statstriphead { margin-top: 5px; font-size: 11.5px; font-weight: 700; letter-spacing: 2px; }
-  .statstrip { margin-top: 3px; border-top: 2.5px solid #1a1712; border-bottom: 1.5px solid #1a1712; padding: 4px 0; display: flex; }
-  .stat { flex: 1; text-align: center; border-right: 1px solid #c9bda0; padding: 0 4px; }
-  .stat:last-child { border-right: none; }
-  .stat .big { font-family: Georgia, "Liberation Serif", serif; font-size: 15px; font-weight: 700; color: #a01e28; line-height: 1.1; }
-  .stat .small { font-size: 8px; font-weight: 700; letter-spacing: .4px; color: #2a251c; line-height: 1.25; margin-top: 1px; }
+  /* briefs: three columns */
+  .brief3 { margin-top: 5px; }
+  .brief3 h4 { font-size: 11.5px; font-weight: 700; letter-spacing: 2px; border-top: 2.5px solid #1c1a15; padding-top: 3px; }
+  .briefgrid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0 18px; margin-top: 3px; }
+  .briefitem { font-size: 8.5px; line-height: 1.16; color: #2c2820; margin-bottom: 1.5px; }
+  .briefitem .bn { display: inline-block; background: #1c1a15; color: #fff; font-size: 8.6px; font-weight: 700; padding: 1.5px 5px 1px 5px; margin-right: 4px; }
+  .briefitem b { color: #1c1a15; }
 
-  /* briefs, two columns */
-  .briefzone { margin-top: 4px; }
-  .briefzone h4 { font-size: 11.5px; font-weight: 700; letter-spacing: 2px; border-top: 2.5px solid #1a1712; padding-top: 3px; }
-  .briefgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 20px; margin-top: 2px; }
-  .brief { font-size: 9px; line-height: 1.18; color: #2a251c; margin-bottom: 1px; }
-  .brief .no { display: inline-block; background: #a01e28; color: #fff; font-size: 9px; font-weight: 700; padding: 1.5px 5px 1px 5px; margin-right: 4px; }
-  .brief b { color: #1a1712; }
-
-  /* colophon */
-  .colophon { margin-top: auto; border-top: 1.5px solid #1a1712; padding-top: 4px; display: flex; justify-content: space-between; font-size: 9px; letter-spacing: .8px; color: #4f4636; font-weight: 700; }
+  /* footer */
+  .foot { margin-top: auto; border-top: 1.5px solid #1c1a15; padding-top: 4px; display: flex; justify-content: space-between; font-size: 9px; letter-spacing: .8px; color: #6b5d43; font-weight: 700; }
 </style>
 </head>
 <body>
 
-  <div class="dateline">
-    <span>FRIDAY 20 NOVEMBER 2026</span>
-    <span class="mid">THE WORLD IN ONE DAY</span>
-    <span>20 STORIES &middot; 6 CONTINENTS</span>
-  </div>
-
-  <div class="nameplate">
-    <h1>The Daily Frame</h1>
-    <div class="motto">ONE DAY <span>&middot;</span> ONE PAGE <span>&middot;</span> EVERY STORY CHECKED TWICE</div>
-    <div class="edition">MORNING EDITION &mdash; AS OF 09:50 WIB / 02:50 UTC</div>
-  </div>
-  <div class="thickthin"></div>
-
-  <div class="wire"><b>WIRE</b><i>&diams;</i>KYIV HIT OVERNIGHT<i>&diams;</i>TANKER BURNS OFF HORMUZ<i>&diams;</i>HOUTHIS STRIKE RIYADH<i>&diams;</i>TAIWAN CURBS SHORTS<i>&diams;</i>ROSE PARDONED</div>
-
-  <div class="leadzone">
-    <div class="kickerrow">
-      <span class="kick">1 &middot; KYIV, UKRAINE &mdash; OVERNIGHT</span>
-      <span class="side">LEAD STORY &middot; BALLISTIC MISSILES</span>
+  <div class="mast">
+    <div class="mast-title">
+      <h1>The Daily Frame</h1>
+      <div class="tagline">THE WHOLE DAY, ON ONE PAGE <em>&middot;</em> EVERY ITEM CHECKED AGAINST TWO SOURCES</div>
     </div>
-    <h2>Missiles rain on Kyiv in the night</h2>
-    <div class="leadbody">
+    <div class="datebox">
+      <div class="dow">FRIDAY</div>
+      <div class="date">20 November 2026</div>
+      <div class="full">FULL-DAY EDITION</div>
+    </div>
+  </div>
+  <div class="doublerule"></div>
+
+  <div class="daybanner">
+    <span class="l">FULL DAY &mdash; EVENTS OF 20 NOVEMBER 2026, FROM THE OVERNIGHT STRIKES TO THE CLOSING BELLS</span>
+    <span class="r">30 STORIES &middot; 6 CONTINENTS</span>
+  </div>
+
+  <div class="leadin">
+    <div class="kick">
+      <span class="k">1 &middot; KYIV, UKRAINE &mdash; THE OVERNIGHT ASSAULT</span>
+      <span class="n">LEAD STORY &middot; WAR IN UKRAINE</span>
+    </div>
+    <h2>A night of fire over Kyiv: nine dead as 110 missiles and 400 drones hit Ukraine</h2>
+    <div class="leadrow">
       <div class="copy">
-        <p><b>Russia fired a wave of ballistic missiles at Kyiv</b> overnight into Friday, with explosions and fires reported across several districts of the capital. Air-raid alerts sounded across the city and other regions as the missiles came in.</p>
-        <p>The strike followed a major drone attack on the city the day before, which killed one person and damaged historic buildings and foreign embassies.</p>
-        <p>It came as Ukraine&rsquo;s European allies, meeting in Berlin, said they were ready for talks with Russia &mdash; with a united position for negotiations.</p>
+        <p><b>Russia launched one of the largest air attacks of the war overnight into Friday,</b> firing more than 110 missiles &mdash; 27 of them ballistic &mdash; and over 400 drones at cities across Ukraine, President Volodymyr Zelensky said. At least nine people were killed and more than two dozen wounded; three bridges across the Dnipro in Kyiv were damaged and power, heating and water were cut in parts of the capital.</p>
+        <p>The assault came hours after President Vladimir Putin, meeting Donald Trump and Xi Jinping in Shenzhen, promised a painful reply to Ukraine&rsquo;s destruction of part of the Kerch bridge. Two Russian missiles and a drone fell in eastern Poland during the attack, and Polish and NATO jets were scrambled.</p>
       </div>
-      <div class="scene">
-        <svg width="100%" height="86" viewBox="0 0 360 116">
-          <rect x="0" y="0" width="360" height="116" fill="#2b2b33"/>
-          <g fill="#fbf7ec"><circle cx="30" cy="18" r="1.6"/><circle cx="70" cy="30" r="1.2"/><circle cx="120" cy="14" r="1.5"/><circle cx="250" cy="20" r="1.6"/><circle cx="300" cy="12" r="1.2"/><circle cx="330" cy="34" r="1.5"/><circle cx="205" cy="12" r="1.2"/></g>
-          <g stroke="#e8a33d" stroke-width="2.5" stroke-linecap="round">
-            <line x1="180" y1="8" x2="180" y2="26"/><line x1="180" y1="52" x2="180" y2="70"/>
-            <line x1="152" y1="39" x2="168" y2="39"/><line x1="192" y1="39" x2="208" y2="39"/>
-            <line x1="160" y1="19" x2="171" y2="30"/><line x1="189" y1="48" x2="200" y2="59"/>
-            <line x1="200" y1="19" x2="189" y2="30"/><line x1="171" y1="48" x2="160" y2="59"/>
-          </g>
-          <circle cx="180" cy="39" r="15" fill="#e8a33d"/>
-          <circle cx="180" cy="39" r="8" fill="#f5c86e"/>
-          <ellipse cx="180" cy="96" rx="120" ry="10" fill="#e8a33d" opacity="0.35"/>
-          <g stroke="#e8a33d" stroke-width="1.8" stroke-linecap="round">
-            <line x1="120" y1="30" x2="128" y2="38"/><line x1="240" y1="30" x2="232" y2="38"/>
-          </g>
-          <circle cx="124" cy="34" r="5" fill="#e8a33d"/>
-          <circle cx="236" cy="34" r="5" fill="#e8a33d"/>
-          <g fill="#1a1712">
-            <rect x="28" y="66" width="36" height="30"/><rect x="72" y="56" width="30" height="40"/>
-            <rect x="110" y="72" width="26" height="24"/><rect x="142" y="62" width="32" height="34"/>
-            <rect x="212" y="70" width="30" height="26"/><rect x="250" y="58" width="28" height="38"/>
-            <rect x="286" y="68" width="34" height="28"/><rect x="326" y="74" width="24" height="22"/>
-          </g>
-          <g fill="#f5c86e"><rect x="36" y="72" width="5" height="6"/><rect x="48" y="82" width="5" height="6"/><rect x="80" y="62" width="5" height="6"/><rect x="150" y="68" width="5" height="6"/><rect x="258" y="64" width="5" height="6"/><rect x="296" y="74" width="5" height="6"/></g>
-          <rect x="0" y="96" width="360" height="4" fill="#e8a33d" opacity="0.7"/>
-          <text x="180" y="112" font-size="10" font-weight="700" letter-spacing="2" text-anchor="middle" fill="#fbf7ec">KYIV &middot; AFTER MIDNIGHT</text>
-        </svg>
-        <div class="cap">A NIGHT SKY OVER KYIV: AIR-RAID ALERTS, THEN EXPLOSIONS AND FIRES IN SEVERAL DISTRICTS.</div>
+      <div class="tollbox">
+        <h5>THE TOLL SO FAR</h5>
+        <ul>
+          <li><b>9 killed, 28+ wounded</b> across Ukraine in the overnight attack</li>
+          <li><b>110+ missiles, 400+ drones</b> fired, Zelensky said; only 3 of 27 ballistic missiles intercepted</li>
+          <li><b>3 Kyiv bridges hit;</b> emergency outages in 11 regions as nuclear plants cut output</li>
+          <li><b>1,144 children</b> killed or injured in Ukraine in 2026, UNICEF said &mdash; a near four-year high</li>
+        </ul>
       </div>
     </div>
   </div>
 
-  <div class="storygrid">
-    <div class="story">
-      <div class="badge">2</div>
-      <div class="inner">
-        <div class="desk">STRAIT OF HORMUZ &middot; MIDDLE EAST</div>
-        <h3>Tanker burns after hitting a mine off Hormuz</h3>
-        <p>A tanker caught fire after striking a naval mine east of the Strait of Hormuz, Iran&rsquo;s navy said; the claim could not be independently verified. <b>Brent crude held near $92</b> as the disruption offset surplus worries.</p>
+  <div class="fronthead">
+    <h4>THE DAY&rsquo;S FRONT PAGE</h4>
+    <span>SIX STORIES THAT SET THE DAY</span>
+  </div>
+  <div class="front3">
+    <div class="fcard">
+      <div class="fnum">2</div>
+      <div class="fbody">
+        <div class="fdesk">STRAIT OF HORMUZ &middot; ENERGY</div>
+        <h3>Tanker ablaze off Hormuz as oil ends the week lower</h3>
+        <p>A tanker caught fire after striking a naval mine east of the Strait of Hormuz, Iran&rsquo;s navy said &mdash; a claim not independently verified. <b>Brent settled at $92.57,</b> up on the day but down for a third straight week as Gulf exports stayed strong.</p>
       </div>
     </div>
-    <div class="story">
-      <div class="badge">3</div>
-      <div class="inner">
-        <div class="desk">RIYADH &middot; SAUDI ARABIA</div>
-        <h3>Houthis strike four Saudi targets</h3>
-        <p>Yemen&rsquo;s Houthis said they hit four targets in Saudi Arabia, including Riyadh. The Saudi-led coalition said it <b>intercepted five ballistic missiles and one cruise missile</b>. No casualties were reported.</p>
+    <div class="fcard">
+      <div class="fnum">3</div>
+      <div class="fbody">
+        <div class="fdesk">RIYADH &middot; SAUDI ARABIA</div>
+        <h3>Houthi missiles reach Riyadh; tower damaged</h3>
+        <p>Yemen&rsquo;s Houthis said they struck four targets in Saudi Arabia, including the capital. The Saudi-led coalition said it <b>shot down five ballistic missiles and one cruise missile;</b> the PIF tower in Riyadh was damaged. No casualties were reported.</p>
       </div>
     </div>
-    <div class="story">
-      <div class="badge">4</div>
-      <div class="inner">
-        <div class="desk">TAIPEI &middot; TAIWAN</div>
-        <h3>Taiwan clamps down on short sellers</h3>
-        <p>New short-selling curbs take effect today after the Taiex fell <b>4.4%</b> on Thursday. Stocks that drop 3.5% or more cannot be shorted below the close the next day; the daily cap on borrowed-share sales falls to 1%.</p>
+    <div class="fcard">
+      <div class="fnum">4</div>
+      <div class="fbody">
+        <div class="fdesk">TAIPEI &middot; TAIWAN</div>
+        <h3>Taipei&rsquo;s worst week since 1991</h3>
+        <p>The Taiex plunged <b>6.2% to 36,033</b> on Friday, its third-biggest one-day points fall, capping a 17.5% weekly collapse &mdash; the worst since 1991 &mdash; as AI doubts spread. New short-selling curbs took effect and the stabilisation fund stepped in.</p>
       </div>
     </div>
-    <div class="story">
-      <div class="badge">5</div>
-      <div class="inner">
-        <div class="desk">WASHINGTON &middot; UNITED STATES</div>
-        <h3>Trump pardons baseball&rsquo;s hit king Pete Rose</h3>
-        <p>President Trump posthumously pardoned <b>Pete Rose</b>, baseball&rsquo;s all-time hits leader, banned from the game since 1989 over betting on games. The pardon is separate from any Hall of Fame decision.</p>
+    <div class="fcard">
+      <div class="fnum">5</div>
+      <div class="fbody">
+        <div class="fdesk">WASHINGTON &middot; UNITED STATES</div>
+        <h3>Trump pardons Pete Rose, 37 years after the ban</h3>
+        <p>President Trump posthumously pardoned <b>Pete Rose,</b> baseball&rsquo;s all-time hits leader, banned since 1989 for betting on games. The pardon does not by itself put Rose in the Hall of Fame.</p>
       </div>
     </div>
-    <div class="story">
-      <div class="badge">6</div>
-      <div class="inner">
-        <div class="desk">INDIA &middot; SOUTH ASIA</div>
-        <h3>80,000 moved as storm Dana nears</h3>
-        <p>India evacuated <b>more than 80,000 people</b> as tropical storm Dana approached the coast, with shelters opened and fishing boats called back to harbour ahead of landfall.</p>
+    <div class="fcard">
+      <div class="fnum">6</div>
+      <div class="fbody">
+        <div class="fdesk">ODISHA &middot; INDIA</div>
+        <h3>Cyclone Akvan comes ashore; 300,000 moved to safety</h3>
+        <p>Cyclone Akvan crossed the Odisha coast near Gopalpur on Friday morning with winds of 70&ndash;80 km/h, gusting to 90. <b>More than 300,000 people</b> had been moved to shelters; 423 rescue teams were deployed and 69 trains cancelled. No deaths were reported in the first assessment.</p>
       </div>
     </div>
-    <div class="story">
-      <div class="badge">7</div>
-      <div class="inner">
-        <div class="desk">BERLIN &middot; GERMANY</div>
-        <h3>Europe says it is ready to talk to Russia</h3>
-        <p>Ukraine&rsquo;s European allies, meeting in Berlin, said they have a <b>united position for negotiations</b> with Russia on ending the war &mdash; as the overnight strike on Kyiv underlined the stakes.</p>
+    <div class="fcard">
+      <div class="fnum">7</div>
+      <div class="fbody">
+        <div class="fdesk">BERLIN &middot; GERMANY</div>
+        <h3>Europe says it is ready to negotiate</h3>
+        <p>Ukraine&rsquo;s European allies, meeting in Berlin, said they held a <b>united position for talks</b> with Russia on ending the war &mdash; even as the night&rsquo;s attack on Kyiv showed the cost of waiting.</p>
       </div>
     </div>
   </div>
 
-  <div class="mapzone">
-    <div class="maptitle">
+  <div class="maprow">
+    <div class="mapleft">
       <h4>THE DAY ON THE MAP</h4>
-      <span>NUMBERS MATCH THE STORIES BELOW &middot; SCHEMATIC, NOT TO SCALE</span>
+      <div class="mapnote">NUMBERED MARKERS MATCH THE STORIES &middot; SCHEMATIC, NOT TO SCALE</div>
+      <svg width="648" height="144" viewBox="0 0 972 148" style="display:block;margin-top:2px">
+        <rect x="0" y="0" width="972" height="148" fill="#f3ead2"/>
+        <g fill="#d9cdae" stroke="#b3a67f" stroke-width="1">
+          <polygon points="30,28 60,18 120,14 180,18 230,22 280,30 300,38 285,55 250,62 210,58 180,48 150,40 120,32 70,28 40,24"/>
+          <polygon points="330,10 360,8 375,14 350,20 330,16"/>
+          <polygon points="270,68 300,66 330,70 350,78 345,92 330,105 315,115 300,108 290,95 275,80"/>
+          <polygon points="470,22 500,14 540,12 570,16 600,20 615,28 600,38 570,40 545,36 520,38 495,34 480,28"/>
+          <polygon points="480,55 510,50 550,48 590,50 610,58 600,72 580,88 560,100 540,92 525,78 510,68 490,62"/>
+          <polygon points="620,20 680,12 760,10 850,12 920,16 950,24 930,32 880,36 850,44 820,48 790,58 760,64 730,60 700,52 670,50 640,48 625,38 615,28"/>
+          <polygon points="790,72 820,74 840,78 820,82 795,80"/>
+          <polygon points="800,92 850,88 890,92 900,100 870,106 830,104 805,98"/>
+          <polygon points="940,108 955,104 950,112 938,112"/>
+        </g>
+        <g stroke="#c9bda0" stroke-width="0.7">
+          <line x1="0" y1="49" x2="972" y2="49"/><line x1="0" y1="99" x2="972" y2="99"/>
+          <line x1="243" y1="0" x2="243" y2="148"/><line x1="486" y1="0" x2="486" y2="148"/><line x1="729" y1="0" x2="729" y2="148"/>
+        </g>
+        <g font-family="Arial, Helvetica, sans-serif" font-size="8" font-weight="700" text-anchor="middle">
+          <g><circle cx="566" cy="36" r="7.5" fill="#a31220"/><text x="566" y="39" fill="#fff">1</text></g>
+          <g><circle cx="638" cy="52" r="7.5" fill="#a31220"/><text x="638" y="55" fill="#fff">2</text></g>
+          <g><circle cx="612" cy="54" r="7.5" fill="#a31220"/><text x="612" y="57" fill="#fff">3</text></g>
+          <g><circle cx="814" cy="53" r="7.5" fill="#a31220"/><text x="814" y="56" fill="#fff">4</text></g>
+          <g><circle cx="272" cy="46" r="7.5" fill="#a31220"/><text x="272" y="49" fill="#fff">5</text></g>
+          <g><circle cx="715" cy="58" r="7.5" fill="#a31220"/><text x="715" y="61" fill="#fff">6</text></g>
+          <g><circle cx="512" cy="30" r="7.5" fill="#a31220"/><text x="512" y="33" fill="#fff">7</text></g>
+          <g><circle cx="504" cy="50" r="7.5" fill="#a31220"/><text x="504" y="53" fill="#fff">8</text></g>
+          <g><circle cx="256" cy="40" r="7.5" fill="#a31220"/><text x="256" y="43" fill="#fff">9</text></g>
+          <g><circle cx="164" cy="34" r="7" fill="#a31220"/><text x="164" y="37" fill="#fff" font-size="7.5">10</text></g>
+          <g><circle cx="288" cy="52" r="7" fill="#a31220"/><text x="288" y="55" fill="#fff" font-size="7.5">11</text></g>
+          <g><circle cx="596" cy="54" r="7" fill="#a31220"/><text x="596" y="57" fill="#fff" font-size="7.5">12</text></g>
+          <g><circle cx="478" cy="36" r="7" fill="#a31220"/><text x="478" y="39" fill="#fff" font-size="7.5">13</text></g>
+          <g><circle cx="610" cy="46" r="7" fill="#a31220"/><text x="610" y="49" fill="#fff" font-size="7.5">14</text></g>
+          <g><circle cx="624" cy="22" r="7" fill="#a31220"/><text x="624" y="25" fill="#fff" font-size="7.5">15</text></g>
+          <g><circle cx="54" cy="91" r="7" fill="#a31220"/><text x="54" y="94" fill="#fff" font-size="7.5">16</text></g>
+          <g><circle cx="571" cy="70" r="7" fill="#a31220"/><text x="571" y="73" fill="#fff" font-size="7.5">17</text></g>
+          <g><circle cx="286" cy="70" r="7" fill="#a31220"/><text x="286" y="73" fill="#fff" font-size="7.5">18</text></g>
+          <g><circle cx="298" cy="36" r="7" fill="#a31220"/><text x="298" y="39" fill="#fff" font-size="7.5">19</text></g>
+          <g><circle cx="146" cy="40" r="7" fill="#a31220"/><text x="146" y="43" fill="#fff" font-size="7.5">20</text></g>
+          <g><circle cx="534" cy="22" r="7" fill="#a31220"/><text x="534" y="25" fill="#fff" font-size="7.5">21</text></g>
+          <g><circle cx="544" cy="48" r="7" fill="#a31220"/><text x="544" y="51" fill="#fff" font-size="7.5">22</text></g>
+          <g><circle cx="566" cy="14" r="7" fill="#a31220"/><text x="566" y="17" fill="#fff" font-size="7.5">23</text></g>
+          <g><circle cx="592" cy="24" r="7" fill="#a31220"/><text x="592" y="27" fill="#fff" font-size="7.5">24</text></g>
+          <g><circle cx="592" cy="56" r="7" fill="#a31220"/><text x="592" y="59" fill="#fff" font-size="7.5">25</text></g>
+          <g><circle cx="761" cy="71" r="7" fill="#a31220"/><text x="761" y="74" fill="#fff" font-size="7.5">26</text></g>
+          <g><circle cx="893" cy="102" r="7" fill="#a31220"/><text x="893" y="105" fill="#fff" font-size="7.5">27</text></g>
+          <g><circle cx="462" cy="18" r="7" fill="#a31220"/><text x="462" y="21" fill="#fff" font-size="7.5">28</text></g>
+          <g><circle cx="357" cy="87" r="7" fill="#a31220"/><text x="357" y="90" fill="#fff" font-size="7.5">29</text></g>
+          <g><circle cx="170" cy="54" r="7" fill="#a31220"/><text x="170" y="57" fill="#fff" font-size="7.5">30</text></g>
+        </g>
+      </svg>
     </div>
-    <svg width="972" height="148" viewBox="0 0 972 148" style="display:block;margin-top:2px">
-      <rect x="0" y="0" width="972" height="148" fill="#efe8d2"/>
-      <!-- continents, rough equirectangular outlines (lon/lat mapped to the box) -->
-      <g fill="#d8cdae" stroke="#b3a67f" stroke-width="1">
-        <polygon points="32,20 108,16 149,16 230,17 270,23 284,25 311,25 338,31 324,35 297,39 284,45 267,53 243,57 224,61 203,58 176,50 149,41 149,34 108,25 68,26 41,25"/>
-        <polygon points="329,21 365,25 378,21 405,18 419,16 378,12 338,12 324,16"/>
-        <polygon points="270,66 297,64 319,66 338,69 351,74 378,78 392,81 378,86 357,92 338,99 324,105 311,111 297,117 289,115 289,107 292,99 297,89 284,86 270,78 267,74 270,70"/>
-        <polygon points="440,62 459,49 486,44 513,44 540,48 567,49 581,51 602,64 624,65 616,74 594,82 581,90 572,97 554,102 535,103 527,96 518,89 510,75 510,71 464,71 451,67 440,64"/>
-        <polygon points="459,44 462,39 481,35 486,33 500,30 508,27 513,25 535,28 543,29 551,25 567,25 567,16 554,16 535,17 518,21 500,25 500,26 508,29 518,30 535,30 551,30 562,37 548,41 537,39 527,38 518,38 508,38 494,39 486,41 481,44 470,44"/>
-        <polygon points="567,16 594,18 648,17 675,15 756,11 837,15 918,16 967,20 945,25 918,29 869,33 864,41 837,45 829,43 810,49 783,58 770,66 756,67 743,62 729,56 716,58 702,67 694,67 683,61 675,58 664,53 648,53 635,53 621,50 616,49 605,50 594,49 581,51 567,44"/>
-        <polygon points="791,92 794,99 797,103 810,102 837,100 856,103 864,105 883,106 891,104 899,96 880,90 869,83 853,84 843,84 826,85 815,88 805,90"/>
-        <polygon points="473,33 486,30 491,29 478,26 470,29"/>
-        <polygon points="837,49 851,46 864,43 869,40 864,37 851,38 837,43"/>
-        <polygon points="937,111 951,108 959,105 967,104 956,108 940,112"/>
-        <polygon points="743,78 770,79 797,81 824,81 851,77 864,81 837,76"/>
-        <polygon points="605,87 616,90 613,95 605,90"/>
-      </g>
-      <!-- graticule -->
-      <g stroke="#c9bda0" stroke-width="0.7">
-        <line x1="0" y1="49" x2="972" y2="49"/><line x1="0" y1="99" x2="972" y2="99"/>
-        <line x1="243" y1="0" x2="243" y2="148"/><line x1="486" y1="0" x2="486" y2="148"/><line x1="729" y1="0" x2="729" y2="148"/>
-      </g>
-      <!-- markers -->
-      <g font-family="Arial, Helvetica, sans-serif" font-size="8.5" font-weight="700" text-anchor="middle">
-        <g><circle cx="568" cy="32" r="7.5" fill="#a01e28"/><text x="568" y="35" fill="#fff">1</text></g>
-        <g><circle cx="646" cy="50" r="7.5" fill="#a01e28"/><text x="646" y="53" fill="#fff">2</text></g>
-        <g><circle cx="616" cy="58" r="7.5" fill="#a01e28"/><text x="616" y="61" fill="#fff">3</text></g>
-        <g><circle cx="814" cy="53" r="7.5" fill="#a01e28"/><text x="814" y="56" fill="#fff">4</text></g>
-        <g><circle cx="276" cy="40" r="7.5" fill="#a01e28"/><text x="276" y="43" fill="#fff">5</text></g>
-        <g><circle cx="720" cy="58" r="7.5" fill="#a01e28"/><text x="720" y="61" fill="#fff">6</text></g>
-        <g><circle cx="522" cy="31" r="7.5" fill="#a01e28"/><text x="522" y="34" fill="#fff">7</text></g>
-        <g><circle cx="508" cy="39" r="7.5" fill="#a01e28"/><text x="508" y="42" fill="#fff">8</text></g>
-        <g><circle cx="252" cy="44" r="7.5" fill="#a01e28"/><text x="252" y="47" fill="#fff">9</text></g>
-        <g><circle cx="162" cy="38" r="7.5" fill="#a01e28"/><text x="162" y="41" fill="#fff">10</text></g>
-        <g><circle cx="284" cy="50" r="7.5" fill="#a01e28"/><text x="284" y="53" fill="#fff">11</text></g>
-        <g><circle cx="580" cy="48" r="7.5" fill="#a01e28"/><text x="580" y="51" fill="#fff">12</text></g>
-        <g><circle cx="490" cy="34" r="7.5" fill="#a01e28"/><text x="490" y="37" fill="#fff">13</text></g>
-        <g><circle cx="612" cy="44" r="7.5" fill="#a01e28"/><text x="612" y="47" fill="#fff">14</text></g>
-        <g><circle cx="618" cy="28" r="7.5" fill="#a01e28"/><text x="618" y="31" fill="#fff">15</text></g>
-        <g><circle cx="54" cy="91" r="7.5" fill="#a01e28"/><text x="54" y="94" fill="#fff">16</text></g>
-        <g><circle cx="571" cy="70" r="7.5" fill="#a01e28"/><text x="571" y="73" fill="#fff">17</text></g>
-        <g><circle cx="286" cy="70" r="7.5" fill="#a01e28"/><text x="286" y="73" fill="#fff">18</text></g>
-        <g><circle cx="292" cy="36" r="7.5" fill="#a01e28"/><text x="292" y="39" fill="#fff">19</text></g>
-        <g><circle cx="150" cy="50" r="7.5" fill="#a01e28"/><text x="150" y="53" fill="#fff">20</text></g>
-      </g>
-    </svg>
-    <div class="maplegend">
-      <span><b>1</b> Kyiv</span><span><b>2</b> Hormuz</span><span><b>3</b> Riyadh</span><span><b>4</b> Taipei</span><span><b>5</b> Washington</span><span><b>6</b> India coast</span><span><b>7</b> Berlin</span><span><b>8</b> Genoa</span><span><b>9</b> Cincinnati</span><span><b>10</b> California</span><span><b>11</b> Washington</span><span><b>12</b> Lebanon</span><span><b>13</b> France</span><span><b>14</b> Tbilisi</span><span><b>15</b> Saratov</span><span><b>16</b> Cook Is.</span><span><b>17</b> Juba</span><span><b>18</b> Bogot&aacute;</span><span><b>19</b> New York</span><span><b>20</b> San Francisco</span>
+    <div class="placelist">
+      <h4>WHERE IT HAPPENED</h4>
+      <div class="cols">
+        <ul>
+          <li><b>1</b> Kyiv</li>
+          <li><b>2</b> Hormuz</li>
+          <li><b>3</b> Riyadh</li>
+          <li><b>4</b> Taipei</li>
+          <li><b>5</b> Washington</li>
+          <li><b>6</b> Gopalpur</li>
+          <li><b>7</b> Berlin</li>
+          <li><b>8</b> Genoa</li>
+          <li><b>9</b> Cincinnati</li>
+          <li><b>10</b> Sacramento</li>
+          <li><b>11</b> Washington</li>
+          <li><b>12</b> Beirut</li>
+          <li><b>13</b> Paris</li>
+          <li><b>14</b> Tbilisi</li>
+          <li><b>15</b> Saratov</li>
+        </ul>
+        <ul>
+          <li><b>16</b> Cook Is.</li>
+          <li><b>17</b> Juba</li>
+          <li><b>18</b> Bogot&aacute;</li>
+          <li><b>19</b> New York</li>
+          <li><b>20</b> San Francisco</li>
+          <li><b>21</b> Poland</li>
+          <li><b>22</b> Lviv area</li>
+          <li><b>23</b> Tallinn</li>
+          <li><b>24</b> Kryvyi Rih</li>
+          <li><b>25</b> Jeddah</li>
+          <li><b>26</b> Kuala Lumpur</li>
+          <li><b>27</b> Sydney</li>
+          <li><b>28</b> London</li>
+          <li><b>29</b> Bras&iacute;lia</li>
+          <li><b>30</b> Los Angeles</li>
+        </ul>
+      </div>
     </div>
   </div>
 
-  <div class="statstriphead">THE DAY IN NUMBERS</div>
-  <div class="statstrip">
-    <div class="stat"><div class="big">80,000+</div><div class="small">PEOPLE EVACUATED<br>AHEAD OF STORM DANA</div></div>
-    <div class="stat"><div class="big">5 + 1</div><div class="small">MISSILES THE SAUDI-LED<br>COALITION SAYS IT SHOT DOWN</div></div>
-    <div class="stat"><div class="big">51&ndash;48</div><div class="small">US SENATE VOTE<br>REJECTING IRAN WAR POWERS</div></div>
-    <div class="stat"><div class="big">&minus;4.4%</div><div class="small">TAIEX ON THURSDAY,<br>BEFORE TAIWAN&rsquo;S CURBS</div></div>
-    <div class="stat"><div class="big">+17%</div><div class="small">ANTHROPIC ON ITS<br>FIRST DAY OF TRADING</div></div>
-  </div>
-
-  <div class="briefzone">
-    <h4>IN BRIEF &mdash; OVERNIGHT AND THIS MORNING</h4>
-    <div class="briefgrid">
-      <div class="brief"><span class="no">8</span><b>Genoa airport shut by drones.</b> Unauthorised drones near the runway halted flights for about two hours on Thursday evening; operations resumed after 22:00, with one ITA flight to Rome cancelled.</div>
-      <div class="brief"><span class="no">9</span><b>Fiona the hippo dies.</b> The Cincinnati Zoo hippo who survived a premature birth in 2017 died on Thursday aged 9, days after swallowing a visitor&rsquo;s hat that fell into her enclosure.</div>
-      <div class="brief"><span class="no">10</span><b>California probes Nvidia.</b> The state is investigating Nvidia over AI chips reaching China, days after chief executive Jensen Huang stepped down and markets slid.</div>
-      <div class="brief"><span class="no">11</span><b>Senate blocks Iran war powers.</b> The US Senate rejected a war-powers resolution on Iran 51&ndash;48, after the measure had passed the House.</div>
-      <div class="brief"><span class="no">12</span><b>Israel hits Lebanon.</b> Israeli warplanes struck a Hezbollah missile facility in eastern Lebanon, the latest strike across the border.</div>
-      <div class="brief"><span class="no">13</span><b>Deadly flat fire in France.</b> One person died and 15 were injured in a fire at an 18-storey apartment building in France.</div>
-      <div class="brief"><span class="no">14</span><b>Boy, 3, pulled from rubble.</b> A three-year-old was rescued alive eight hours after a gas explosion in Tbilisi, Georgia.</div>
-      <div class="brief"><span class="no">15</span><b>Three killed in Saratov.</b> Three people were killed in a drone attack on Russia&rsquo;s Saratov region.</div>
-      <div class="brief"><span class="no">16</span><b>Storm alerts in the Pacific.</b> The Cook Islands issued a gale warning for Suwarrow and a storm alert for Pukapuka as Cyclone Xavier tracks through.</div>
-      <div class="brief"><span class="no">17</span><b>Tinubu urges Machar release.</b> Nigeria&rsquo;s President Tinubu called for the release of South Sudan&rsquo;s detained vice-president Riek Machar.</div>
-      <div class="brief"><span class="no">18</span><b>US backs coca spraying.</b> Washington backed Colombia&rsquo;s plan to resume aerial spraying of coca crops, despite concerns from lawmakers.</div>
-      <div class="brief"><span class="no">19</span><b>Markets slide again.</b> Wall Street fell for a fifth straight session &mdash; the S&amp;P 500 down 2.0% &mdash; and Tokyo&rsquo;s Nikkei slid 4.7% on AI worries.</div>
-      <div class="brief"><span class="no">20</span><b>Anthropic soars on debut.</b> Anthropic closed up 17% on its first day of trading, after pricing the largest IPO on record at $83 a share.</div>
+  <div class="numband">
+    <h4>THE DAY IN NUMBERS</h4>
+    <div class="numrow">
+      <div class="numcell"><div class="v">300,000+</div><div class="t">PEOPLE MOVED TO SHELTERS AHEAD OF CYCLONE AKVAN</div></div>
+      <div class="numcell"><div class="v">9</div><div class="t">KILLED IN THE OVERNIGHT STRIKE ON UKRAINE</div></div>
+      <div class="numcell"><div class="v">&minus;3.7%</div><div class="t">S&amp;P 500 ON FRIDAY, ITS SEVENTH STRAIGHT FALL</div></div>
+      <div class="numcell"><div class="v">&minus;17.5%</div><div class="t">TAIEX FOR THE WEEK, WORST SINCE 1991</div></div>
+      <div class="numcell"><div class="v">1,144</div><div class="t">CHILDREN KILLED OR INJURED IN UKRAINE IN 2026</div></div>
+      <div class="numcell"><div class="v">42</div><div class="t">INJURED IN THE EVENING STRIKE ON KRYVYI RIH</div></div>
     </div>
   </div>
 
-  <div class="colophon">
+  <div class="brief3">
+    <h4>THE REST OF THE DAY &mdash; IN BRIEF</h4>
+    <div class="briefgrid3">
+      <div class="briefitem"><span class="bn">8</span><b>Drones shut Genoa airport.</b> Unauthorised drones near the runway halted flights for about two hours on Thursday evening; one ITA flight to Rome was cancelled before operations resumed.</div>
+      <div class="briefitem"><span class="bn">9</span><b>Fiona the hippo dies at nine.</b> The Cincinnati Zoo hippo, famous for surviving a premature birth in 2017, died on Thursday, days after swallowing a visitor&rsquo;s hat.</div>
+      <div class="briefitem"><span class="bn">10</span><b>California probes Nvidia &mdash; and now the SEC is looking too.</b> The state is investigating AI chips reaching China; Reuters reported the SEC is examining the chipmaker&rsquo;s accounting. Nvidia shares slid.</div>
+      <div class="briefitem"><span class="bn">11</span><b>Senate rejects Iran war-powers measure, 51&ndash;48.</b> The resolution would have curbed the president&rsquo;s ability to wage war on Iran; it failed late on Thursday.</div>
+      <div class="briefitem"><span class="bn">12</span><b>Israeli jets hit a Hezbollah missile site</b> in eastern Lebanon, the latest cross-border strike.</div>
+      <div class="briefitem"><span class="bn">13</span><b>One dead, 15 hurt</b> in a fire at an 18-storey apartment block in France.</div>
+      <div class="briefitem"><span class="bn">14</span><b>A three-year-old boy was pulled alive</b> from rubble eight hours after a gas explosion in Tbilisi.</div>
+      <div class="briefitem"><span class="bn">15</span><b>Three people were killed</b> in a drone attack on Russia&rsquo;s Saratov region.</div>
+      <div class="briefitem"><span class="bn">16</span><b>Gale warnings for Suwarrow</b> and a storm alert for Pukapuka as Cyclone Xavier moves through the Cook Islands.</div>
+      <div class="briefitem"><span class="bn">17</span><b>Nigeria&rsquo;s President Tinubu urged the release</b> of South Sudan&rsquo;s detained vice-president Riek Machar.</div>
+      <div class="briefitem"><span class="bn">18</span><b>Washington backed Colombia&rsquo;s plan</b> to restart aerial spraying of coca crops, over lawmakers&rsquo; objections.</div>
+      <div class="briefitem"><span class="bn">19</span><b>Wall Street&rsquo;s rout deepened:</b> the S&amp;P 500 fell 3.7% for a seventh straight loss and entered correction territory, down 8.6% on the week; the Nasdaq slid 5.3% and ended the year in the red.</div>
+      <div class="briefitem"><span class="bn">20</span><b>Anthropic, up 17% on its record-breaking debut</b> on Thursday, gave back much of the gain on Friday as AI stocks sold off.</div>
+      <div class="briefitem"><span class="bn">21</span><b>Russian missiles fell in Poland.</b> Two missiles and a jet-powered drone came down in the east during the overnight attack; Polish and NATO jets scrambled and Patriot batteries were activated. Warsaw called it a provocation.</div>
+      <div class="briefitem"><span class="bn">22</span><b>Child casualties in Ukraine are the highest in almost four years,</b> UNICEF said on World Children&rsquo;s Day: 1,144 children killed or injured in the first ten months of 2026.</div>
+      <div class="briefitem"><span class="bn">23</span><b>Estonia will shut all road crossings with Russia</b> from 1 December for at least six months, citing sabotage and hybrid attacks. Moscow called it a new Iron Curtain.</div>
+      <div class="briefitem"><span class="bn">24</span><b>A double-tap strike on central Kryvyi Rih</b> in the evening killed a seven-year-old boy and a 20-year-old paramedic and injured 42, as drones hit rescuers at the scene.</div>
+      <div class="briefitem"><span class="bn">25</span><b>A Friday of football:</b> Bayern were held 1&ndash;1 by K&ouml;ln, Al Ahli beat Al Nassr 3&ndash;1, Espanyol won 1&ndash;0 at Bilbao &mdash; 232 matches played worldwide, 654 goals.</div>
+      <div class="briefitem"><span class="bn">26</span><b>India&rsquo;s under-17s qualified for the AFC U17 Asian Cup</b> after a goalless draw with hosts Malaysia topped Group E.</div>
+      <div class="briefitem"><span class="bn">27</span><b>Western Sydney Wanderers beat Adelaide United 4&ndash;2</b> in a six-goal A-League return after the international break.</div>
+      <div class="briefitem"><span class="bn">28</span><b>Gold fell $144 to $3,541.50</b> in its worst week since March, as the dollar neared a 19-month high and investors sold everything.</div>
+      <div class="briefitem"><span class="bn">29</span><b>Jair Bolsonaro was taken to hospital in Bras&iacute;lia</b> with severe abdominal pain; doctors found a near-complete intestinal obstruction. The jailed ex-president, 71, is stable under observation.</div>
+      <div class="briefitem"><span class="bn">30</span><b>A magnitude 4.2 earthquake woke Los Angeles</b> at 3:25 a.m. near Commerce; no damage or injuries were reported, and no phone alert went out &mdash; the threshold is 4.5.</div>
+    </div>
+  </div>
+
+  <div class="foot">
     <span>THE DAILY FRAME &middot; FRIDAY 20 NOVEMBER 2026</span>
-    <span>MORNING EDITION &middot; SOURCES IN SOURCES.MD</span>
-    <span>20 STORIES &middot; 6 CONTINENTS</span>
+    <span>FULL-DAY EDITION &middot; SOURCES IN SOURCES.MD</span>
+    <span>30 STORIES &middot; 6 CONTINENTS</span>
   </div>
 
 </body>
